@@ -1,0 +1,29 @@
+name: daily-hyperpop
+on:
+  schedule:
+    - cron: "0 9 * * *" # UTC 09:00 = KST 18:00
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node script.mjs
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      - name: Commit history
+        run: |
+          if git status --porcelain | grep -q "history.json"; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add history.json
+            git commit -m "chore: update history"
+            git push
+          fi
