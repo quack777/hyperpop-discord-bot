@@ -1,6 +1,6 @@
 # Hyperpop Daily Discord Message
 
-매일 18:00 KST에 하이퍼팝 제작자를 위한 3문단 메시지를 디스코드로 전송합니다.
+매일 KST 17:43에 하이퍼팝 제작자를 위한 3문단 메시지를 디스코드로 전송합니다.
 
 ## 구성
 - `messages.json`: 메시지 데이터 풀 (30개)
@@ -21,4 +21,5 @@ DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..." node script.mjs
 ```
 
 ## 스케줄
-- KST 18:00 = UTC 09:00
+- KST 17:43 = UTC 08:43
+- GitHub Actions `schedule`은 best-effort라 정각 트래픽 집중/러너 가용성에 따라 지연될 수 있습니다.
