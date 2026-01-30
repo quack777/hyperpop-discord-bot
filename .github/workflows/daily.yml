@@ -1,7 +1,7 @@
 name: daily-hyperpop
 on:
   schedule:
-    - cron: "0 9 * * *" # UTC 09:00 = KST 18:00
+    - cron: "43 8 * * *" # UTC 08:43 = KST 17:43
   workflow_dispatch:
 
 permissions:
